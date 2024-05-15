@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: frontend-image
+    ports:
+      - "80:80"
+
+  backend:
+    image: backend-image
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: job_applications
+      MYSQL_USER: suyog73
+      MYSQL_PASSWORD: 123
+    expose:
+      - "3306"
